@@ -1,3 +1,6 @@
+emscripten build demo:
+
+http://htmlpreview.github.io/?https://raw.githubusercontent.com/yazgoo/pvrx2png/emscripten/bin/index.html
             ______              ___ ___ ______ ______              
            |   __ \.--.--.----.|   |   |__    |   __ \.-----.-----.
            |    __/|  |  |   _||-     -|    __|    __/|     |  _  |
