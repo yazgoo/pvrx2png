@@ -3,21 +3,30 @@
 var Module;
 if (!Module) Module = eval('(function() { try { return Module || {} } catch(e) { return {} } })()');
 Module['noInitialRun'] = true;
-Module['postRun'] = function() {
-    console.log('done.....');
-}
 function pvrx2png(name, text)
 {
-    output_name = name.substr(0, name.lastIndexOf(".")) + ".png";
-    output = FS.createDataFile('/', output_name, "", true, true);
-    FS.createDataFile('/', name, text, true, true);
-    console.log(output.contents);
-    Module.callMain([name]);
+    var output;
+    var output_name = name.substr(0, name.lastIndexOf(".")) + ".png";
+    Module['preRun'] = function() {
+        console.log("prerun")
+        output = FS.createDataFile('/', output_name, "", true, true);
+        FS.createDataFile('/', name, text, true, true);
+    }
+    Module['postRun'] = function(e) {
+        console.log('done.....');
+        console.log(output);
+        console.log('done.....');
+    }
+    Module.preRun()
+    Module.callMain([name])
+    Module.postRun()
+    console.log("<output");
     console.log(output);
+    console.log(">output");
     return output.contents;
 }
 </script>
-<script src=../bin/pvrx2png.js></script>
+<script src="pvrx2png.js"></script>
 <input type=file id=input />
 <br/>
 <image src="" id=image />
