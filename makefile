@@ -42,7 +42,7 @@ UPX 		= upx
 WINDRES     = x86_64-w64-mingw32-windres
 
 # Flags
-CXXFLAGS 	= -O3 -Wall -I"./deps/zlib/" -I"./deps/libpng/" -I"./deps/squish"
+CXXFLAGS 	= -s DISABLE_EXCEPTION_CATCHING=0 -O3 -Wall -I"./deps/zlib/" -I"./deps/libpng/" -I"./deps/squish"
 #LDFLAGS 	=  -L"./lib" -lstdc++ -lsquish -lpng -lz
 LDFLAGS 	=  -L"./lib" -lsquish -lpng -lz
 UPXFLAGS 	= -9
