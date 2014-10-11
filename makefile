@@ -22,7 +22,7 @@ PRJNAME 	= pvrx2png
 DEBUG		= False
 
 # Project files
-OBJS 		= $(OBJSDIR)main.o $(OBJSDIR)rsrc.o
+OBJS 		= $(OBJSDIR)main.o # $(OBJSDIR)rsrc.o
 
 # Directories
 BINDIR 		= bin/
@@ -31,8 +31,10 @@ LIBDIR		= lib/
 
 # Proggies
 AR 			= ar
-CC 			= gcc
-CXX 		= g++
+#CC 			= gcc
+CC 			= emcc
+#CXX 		= g++
+CXX 		= emcc
 RM 			= rm
 STRIP 		= strip
 UPX 		= upx
@@ -41,7 +43,8 @@ WINDRES     = x86_64-w64-mingw32-windres
 
 # Flags
 CXXFLAGS 	= -O3 -Wall -I"./deps/zlib/" -I"./deps/libpng/" -I"./deps/squish"
-LDFLAGS 	=  -L"./lib" -lstdc++ -lsquish -lpng -lz
+#LDFLAGS 	=  -L"./lib" -lstdc++ -lsquish -lpng -lz
+LDFLAGS 	=  -L"./lib" -lsquish -lpng -lz
 UPXFLAGS 	= -9
 
 ###############################################################################
@@ -49,7 +52,7 @@ UPXFLAGS 	= -9
 ###############################################################################
 
 # Target binary
-TARGET = $(BINDIR)$(PRJNAME).exe
+TARGET = $(BINDIR)$(PRJNAME).js
 
 # Debug test...
 ifeq ($(DEBUG),True)
@@ -59,8 +62,8 @@ endif
 # Go !	
 all : libsquish-make libpng-make $(OBJS)
 	$(CXX) -o $(TARGET) $(OBJS) $(LDFLAGS) $(CXXFLAGS)
-	$(STRIP) $(TARGET)
-	$(UPX) $(UPXFLAGS) $(TARGET)
+	#$(STRIP) $(TARGET)
+	#$(UPX) $(UPXFLAGS) $(TARGET)
 	
 # Compile sources
 $(OBJSDIR)%.o: %.cpp
