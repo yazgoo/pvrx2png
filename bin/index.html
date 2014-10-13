@@ -9,8 +9,8 @@ function pvrx2png(name, text)
     var output_name = name.substr(0, name.lastIndexOf(".")) + ".png";
     Module['preRun'] = function() {
         console.log("prerun")
-        output = FS.createDataFile('/', output_name, "", true, true);
-        FS.createDataFile('/', name, text, true, true);
+        output = Module["FS_createDataFile"]('/', output_name, "", true, true);
+        Module["FS_createDataFile"]('/', name, text, true, true);
     }
     Module['postRun'] = function(e) {
         console.log('done.....');
