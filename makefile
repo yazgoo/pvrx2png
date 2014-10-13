@@ -65,6 +65,9 @@ all : libsquish-make libpng-make $(OBJS)
 	$(CXX) -o $(TARGET) $(OBJS) $(LDFLAGS) $(CXXFLAGS)
 	#$(STRIP) $(TARGET)
 	#$(UPX) $(UPXFLAGS) $(TARGET)
+
+$(BINDIR)$(PRJNAME)_all.js: $(BINDIR)$(PRJNAME).js $(BINDIR)$(PRJNAME)_wrapper.js
+	cat $^ > $@
 	
 # Compile sources
 $(OBJSDIR)%.o: %.cpp
