@@ -3,6 +3,12 @@
 var Module;
 if (!Module) Module = eval('(function() { try { return Module || {} } catch(e) { return {} } })()');
 Module['noInitialRun'] = true;
+</script>
+<script src="pvrx2png.js"></script>
+<input type=file id=input />
+<br/>
+<image src="" id=image />
+<script>
 function pvrx2png(name, text)
 {
     var output;
@@ -26,12 +32,6 @@ function pvrx2png(name, text)
     console.log(">output");
     return output.contents;
 }
-</script>
-<script src="pvrx2png.js"></script>
-<input type=file id=input />
-<br/>
-<image src="" id=image />
-<script>
 var input = document.getElementById("input");
 var image = document.getElementById("image");
 var text = document.getElementById("text");
