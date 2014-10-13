@@ -32,7 +32,8 @@ function pvrx2png(name, text)
 <image src="" id=image />
 <script>
 var input = document.getElementById("input");
-var image = document.getElementById("image")
+var image = document.getElementById("image");
+var text = document.getElementById("text");
 input.addEventListener('change', function(e) {
         var file = input.files[0];
         var reader = new FileReader();
@@ -42,8 +43,8 @@ input.addEventListener('change', function(e) {
                 if(bytes[i] < 0) bytes[i] += 256
             console.log(bytes);
             image.src = "data:image/png;base64," +
-                btoa(String.fromCharCode.apply(null, bytes));
+                btoa(String.fromCharCode.apply(null, new Uint8Array(bytes)));
         }
-        reader.readAsText(file);    
+        reader.readAsBinaryString(file);    
         });
 </script>
